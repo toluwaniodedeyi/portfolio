@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toluwani Odedeyi — UX Writer &amp; Content Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFEDE7;
+    --paper-raised:#F7F5F1;
+    --ink:#1B1B1F;
+    --ink-soft:#54534C;
+    --teal:#1F4B4B;
+    --teal-soft:#DCE6E4;
+    --ochre:#C08A3E;
+    --line:#D8D5CC;
+    --serif:'Source Serif 4', Georgia, serif;
+    --sans:'IBM Plex Sans', -apple-system, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.6;
+  }
+  a{color:var(--teal);}
+  .layout{
+    display:grid;
+    grid-template-columns:230px 1fr;
+    min-height:100vh;
+  }
+  /* Sidebar nav */
+  nav.side{
+    position:sticky;
+    top:0;
+    height:100vh;
+    padding:2.5rem 1.5rem;
+    border-right:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  nav.side .brand{
+    font-family:var(--serif);
+    font-size:1.15rem;
+    font-weight:600;
+    margin-bottom:2.5rem;
+    line-height:1.3;
+  }
+  nav.side .brand span{
+    display:block;
+    font-family:var(--sans);
+    font-size:0.78rem;
+    font-weight:400;
+    color:var(--ink-soft);
+    margin-top:0.3rem;
+  }
+  nav.side ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+  }
+  nav.side li{margin-bottom:0.65rem;}
+  nav.side a{
+    text-decoration:none;
+    color:var(--ink);
+    font-size:0.92rem;
+    border-left:2px solid transparent;
+    padding-left:0.7rem;
+    display:block;
+  }
+  nav.side a:hover{
+    border-left-color:var(--teal);
+    color:var(--teal);
+  }
+  nav.side .sub{
+    padding-left:1.5rem;
+    margin-top:0.3rem;
+  }
+  nav.side .sub a{
+    font-size:0.82rem;
+    color:var(--ink-soft);
+  }
+  nav.side footer{
+    font-size:0.78rem;
+    color:var(--ink-soft);
+  }
+  nav.side footer a{display:inline-block; margin-right:0.6rem;}
+
+  main{padding:0;}
+  section{
+    padding:4.5rem 4rem;
+    border-bottom:1px solid var(--line);
+    max-width:920px;
+  }
+  section:last-of-type{border-bottom:none;}
+
+  /* Hero */
+  #home{padding-top:5.5rem;}
+  .eyebrow-name{
+    font-family:var(--sans);
+    font-size:0.95rem;
+    color:var(--ink-soft);
+    margin:0 0 1.4rem 0;
+  }
+  h1.hook{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:2.35rem;
+    line-height:1.35;
+    max-width:15ch;
+    margin:0 0 1.6rem 0;
+  }
+  .hero-body p{
+    font-size:1.05rem;
+    max-width:62ch;
+    color:#2c2c2c;
+  }
+  .hero-sub{
+    font-size:0.98rem;
+    color:var(--ink-soft);
+    max-width:62ch;
+    margin-top:1.8rem;
+  }
+  .cta-row{
+    margin-top:2rem;
+    display:flex;
+    gap:1.4rem;
+    flex-wrap:wrap;
+  }
+  .cta-row a{
+    font-size:0.92rem;
+    text-decoration:none;
+    color:var(--ink);
+    border-bottom:1px solid var(--ink);
+    padding-bottom:2px;
+  }
+  .cta-row a:hover{color:var(--teal); border-color:var(--teal);}
+
+  h2.section-title{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1.7rem;
+    margin:0 0 1.6rem 0;
+  }
+  h3.card-title{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1.25rem;
+    margin:0 0 0.2rem 0;
+  }
+  .tag{
+    display:inline-block;
+    font-size:0.75rem;
+    color:var(--teal);
+    background:var(--teal-soft);
+    padding:0.2rem 0.6rem;
+    border-radius:3px;
+    margin-bottom:0.9rem;
+  }
+  .quickfacts{
+    margin-top:1.8rem;
+    padding-top:1.4rem;
+    border-top:1px solid var(--line);
+    font-size:0.92rem;
+    color:var(--ink-soft);
+  }
+
+  /* Case study cards */
+  .case-preview-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    gap:1.2rem;
+    margin-top:2rem;
+  }
+  .case-preview{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    padding:1.3rem;
+  }
+  .case-preview h4{
+    font-family:var(--serif);
+    font-size:1.05rem;
+    margin:0 0 0.4rem 0;
+  }
+  .case-preview p{
+    font-size:0.88rem;
+    color:var(--ink-soft);
+    margin:0;
+  }
+
+  .confidentiality-note{
+    background:var(--paper-raised);
+    border-left:3px solid var(--ochre);
+    padding:1rem 1.3rem;
+    font-size:0.88rem;
+    color:var(--ink-soft);
+    margin-bottom:2.4rem;
+  }
+
+  details.case-study{
+    border-top:1px solid var(--line);
+    padding:1.6rem 0;
+  }
+  details.case-study:last-child{border-bottom:1px solid var(--line);}
+  details.case-study summary{
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:1rem;
+  }
+  details.case-study summary::-webkit-details-marker{display:none;}
+  details.case-study summary .plus{
+    font-family:var(--serif);
+    font-size:1.3rem;
+    color:var(--teal);
+    flex-shrink:0;
+  }
+  details.case-study[open] summary .plus{transform:rotate(45deg); display:inline-block;}
+  .case-role{font-size:0.85rem; color:var(--ink-soft); margin:0.15rem 0 0 0;}
+  .case-body{margin-top:1.4rem;}
+  .case-body h5{
+    font-family:var(--sans);
+    font-size:0.82rem;
+    text-transform:none;
+    color:var(--teal);
+    margin:1.3rem 0 0.35rem 0;
+    font-weight:600;
+  }
+  .case-body p, .case-body li{
+    font-size:0.94rem;
+    color:#2c2c2c;
+  }
+  .case-body ul{padding-left:1.2rem; margin:0.4rem 0;}
+  .prd-note{
+    font-style:italic;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    margin-bottom:0.8rem;
+  }
+  .prd-list{
+    counter-reset:prd;
+    padding:0;
+    list-style:none;
+    margin-top:0.6rem;
+  }
+  .prd-list li{
+    counter-increment:prd;
+    margin-bottom:0.9rem;
+    padding-left:1.6rem;
+    position:relative;
+    font-size:0.94rem;
+  }
+  .prd-list li::before{
+    content:counter(prd);
+    position:absolute;
+    left:0;
+    top:0.05rem;
+    font-family:var(--serif);
+    font-size:0.82rem;
+    color:var(--teal);
+    border:1px solid var(--teal);
+    width:1.1rem;
+    height:1.1rem;
+    border-radius:50%;
+    text-align:center;
+    line-height:1.05rem;
+  }
+  .prd-list b{font-weight:600;}
+  .link-out{
+    display:inline-block;
+    margin-top:1rem;
+    font-size:0.85rem;
+  }
+
+  .instructional-quote{
+    font-family:var(--serif);
+    font-size:1.15rem;
+    font-style:italic;
+    color:var(--ink);
+    border-left:3px solid var(--teal);
+    padding-left:1.2rem;
+    margin:1.5rem 0;
+  }
+
+  .social-role{
+    margin-bottom:1.3rem;
+  }
+  .social-role h4{
+    font-family:var(--serif);
+    font-size:1.05rem;
+    margin:0 0 0.2rem 0;
+  }
+  .social-role p{margin:0; font-size:0.92rem; color:var(--ink-soft);}
+
+  footer.site-footer{
+    padding:3rem 4rem;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+  }
+
+  @media (max-width:820px){
+    .layout{grid-template-columns:1fr;}
+    nav.side{
+      position:relative;
+      height:auto;
+      flex-direction:row;
+      align-items:center;
+      justify-content:space-between;
+      padding:1.2rem 1.5rem;
+      border-right:none;
+      border-bottom:1px solid var(--line);
+    }
+    nav.side ul{display:none;}
+    nav.side footer{display:none;}
+    nav.side .brand{margin-bottom:0;}
+    section{padding:3rem 1.5rem;}
+    h1.hook{font-size:1.8rem;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <nav class="side">
+    <div>
+      <div class="brand">Toluwani Odedeyi<span>UX Writer &amp; Content Designer</span></div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#case-studies">Case Studies</a>
+          <ul class="sub">
+            <li><a href="#bookings">Bookings</a></li>
+            <li><a href="#hosted-courses">Hosted Courses</a></li>
+            <li><a href="#link-in-bio">Link-in-Bio</a></li>
+            <li><a href="#pay-in-tranches">Pay-in-Tranches</a></li>
+            <li><a href="#blood-donation">Blood Donation App</a></li>
+            <li><a href="#tour-guide">Tour Guide Website</a></li>
+          </ul>
+        </li>
+        <li><a href="#instructional">Instructional Writing</a></li>
+        <li><a href="#social">Content &amp; Social</a></li>
+        <li><a href="#contact">Résumé / Contact</a></li>
+      </ul>
+    </div>
+    <footer>
+      <a href="https://www.behance.net/toluwaniodedeyi" target="_blank" rel="noopener">Behance</a>
+      <a href="http://dribbble.com/ToluwaniDesigns" target="_blank" rel="noopener">Dribbble</a>
+      <a href="https://linkedin.com/in/toluwani-odedeyi" target="_blank" rel="noopener">LinkedIn</a>
+    </footer>
+  </nav>
+
+  <main>
+
+    <section id="home">
+      <p class="eyebrow-name">Toluwani Odedeyi</p>
+      <h1 class="hook">I love the moment something confusing suddenly makes sense.</h1>
+      <div class="hero-body">
+        <p>That's the moment I've spent my whole career chasing. It started with language — studying how people actually understand words, not just how words are supposed to work. Then I became a teacher, standing in front of a room full of students who needed one more way to hear something before it clicked. Then I became a technical writer, taking knowledge that only lived in one person's head and turning it into something anyone could pick up and use.</p>
+        <p>It turns out all of that was the same job. Someone builds something useful, and someone else has to figure out how to use it — alone, with no one to ask. That's the gap I work in. Whether it's a product screen, a class syllabus, or a document handed straight to engineers, my job is making sure people understand it the first time, without needing to ask for help.</p>
+      </div>
+      <p class="hero-sub">UX Writer &amp; Content Designer with a background in linguistics, technical writing, and instructional design. Former UX Designer &amp; Writer at Mainstack, writing for creators across 145+ countries. Currently a PhD candidate in UX &amp; Technical Communication at the University of Florida.</p>
+      <div class="cta-row">
+        <a href="Toluwani_Odedeyi_CV.pdf">Résumé</a>
+        <a href="https://www.behance.net/toluwaniodedeyi" target="_blank" rel="noopener">Behance</a>
+        <a href="http://dribbble.com/ToluwaniDesigns" target="_blank" rel="noopener">Dribbble</a>
+        <a href="https://linkedin.com/in/toluwani-odedeyi" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:toluwani.odedeyi@ufl.edu">Email</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">About</h2>
+      <p>I'm a UX writer and content designer working at the intersection of language, teaching, and product. My path started in linguistics, moved through teaching and technical writing, and landed in UX writing because I kept noticing the same thing everywhere: complexity isn't the enemy, confusion is.</p>
+      <p>At Mainstack, I designed two products from scratch — Bookings and Hosted Courses — writing the PRDs handed to engineering and every word of copy in the final product. I also redesigned Link-in-Bio around a template system built for real creator personas, and wrote the copy that made Pay-in-Tranches, a fairly technical payment feature, feel simple and trustworthy to first-time buyers. I've also led communications and content for organizations including Placements and DearDesigner, and I currently teach multimodal writing as an Instructor of Record at the University of Florida, where I write the syllabi and course documentation a first-time student has to understand with zero hand-holding.</p>
+      <p>My MA and PhD research at UF focuses on user experience and technical communication — so the reasoning behind my word choices is grounded in how people actually read, trust, and act on written guidance, not just instinct.</p>
+      <div class="quickfacts">
+        PhD (in progress) &amp; MA, English — UX &amp; Tech Comm, University of Florida &nbsp;·&nbsp;
+        UX Designer &amp; Writer, Mainstack (2023–2024) &nbsp;·&nbsp;
+        Instructor of Record, UF — Teaching Excellence Award, 2026 &nbsp;·&nbsp;
+        Figma, Notion, Miro, Canvas
+      </div>
+    </section>
+
+    <section id="case-studies">
+      <h2 class="section-title">Case Studies</h2>
+
+      <div class="confidentiality-note">
+        Details in the following case studies have been generalized to respect confidentiality agreements with my former employer. Specific metrics, internal documentation, and proprietary process details have been omitted, approximated, or reconstructed to illustrate my role and approach rather than reproduce internal materials.
+      </div>
+
+      <div class="case-preview-grid">
+        <div class="case-preview"><h4>Bookings</h4><p>0–1 product design, UX writing, and PRD for a creator scheduling tool.</p></div>
+        <div class="case-preview"><h4>Hosted Courses</h4><p>0–1 product design, UX writing, and PRD for a course-selling platform.</p></div>
+        <div class="case-preview"><h4>Link-in-Bio</h4><p>Redesign around persona-based templates, plus UX copy.</p></div>
+        <div class="case-preview"><h4>Pay-in-Tranches</h4><p>UX copy simplifying an installment payment feature.</p></div>
+      </div>
+
+      <!-- Bookings -->
+      <details class="case-study" id="bookings">
+        <summary>
+          <div>
+            <h3 class="card-title">Mainstack — Bookings</h3>
+            <p class="case-role">Product design · UX writing · PRD &amp; handover documentation — built from scratch</p>
+          </div>
+          <span class="plus">+</span>
+        </summary>
+        <div class="case-body">
+          <p class="prd-note">The structure below reflects the type of thinking and documentation I produced for this project — it is a generalized illustration of my process, not a reproduction of the original PRD or internal materials.</p>
+
+          <h5>My role</h5>
+          <p>I owned Bookings end to end as a 0-to-1 product: I designed the flow and screens, wrote all product copy, authored the PRD, and produced the handover documentation engineering used to build and QA the feature. There was no existing scheduling product to redesign — every decision, from information architecture to edge-case handling, started with me.</p>
+
+          <h5>The problem</h5>
+          <p>Creators had no way to sell time — consultations, sessions, calls — without juggling a separate calendar tool and manually collecting payment outside the platform. The product needed to unify availability, booking, and payment into a single flow that worked reliably across time zones with no manual reconciliation.</p>
+
+          <h5>PRD</h5>
+          <ol class="prd-list">
+            <li><b>Purpose &amp; background</b> — Creators were losing revenue and time to manual scheduling workflows stitched together across calendar apps, invoicing tools, and DMs. Bookings consolidates availability management, checkout, and confirmation into one native flow.</li>
+            <li><b>Scope</b> — In scope (v1): single-creator availability, one-on-one session booking, combined booking + payment, automated confirmation and reminder notifications, cancellation/rescheduling with policy enforcement. Out of scope (v1): group/cohort bookings, recurring session packages, third-party calendar sync (flagged as a v2 dependency).</li>
+            <li><b>User personas</b> — <i>The Creator</i>, who sells 1:1 time and needs control over availability and protection against no-shows; <i>the Client</i>, booking a session for the first time, who needs certainty that slot, timezone, and payment are all correctly locked in.</li>
+            <li><b>User flows</b> — Two primary flows: the creator sets availability and publishes bookable slots; the client selects a slot, pays, receives confirmation, and can cancel or reschedule. Each flow was documented as a step-by-step diagram with corresponding screen states and copy annotations for engineering handoff.</li>
+            <li><b>Functional requirements</b> — Slot availability calendar with creator-defined windows; automatic timezone conversion at display time; combined booking-and-payment transaction; system-generated confirmation and reminder notifications; cancellation/rescheduling flow with configurable creator policy; real-time creator notification on booking/cancellation events.</li>
+            <li><b>Acceptance criteria</b> — Defined per requirement, e.g. for timezone conversion: given a client in a different timezone than the creator, when they view a slot, the displayed time reflects the client's local timezone with the creator's timezone shown as reference.</li>
+            <li><b>Edge cases &amp; error states</b> — Double-booking race conditions, cancellation after payment capture, daylight saving time transitions shifting a confirmed slot, payment failure after a slot is tentatively held.</li>
+            <li><b>Dependencies &amp; stakeholders</b> — Cross-functional sign-off from engineering (booking logic, payment integration), design (visual system), and support (cancellation/refund policy language).</li>
+          </ol>
+
+          <h5>Handover documentation</h5>
+          <p>Produced the handoff package engineering used to build against: annotated flow diagrams, a full content/copy deck mapped to each screen state (including error and empty states), and a QA checklist derived directly from the acceptance criteria — so QA could test against the same source of truth as the PRD, rather than reverse-engineering expected behavior from screens alone.</p>
+        </div>
+      </details>
+
+      <!-- Hosted Courses -->
+      <details class="case-study" id="hosted-courses">
+        <summary>
+          <div>
+            <h3 class="card-title">Mainstack — Hosted Courses</h3>
+            <p class="case-role">Product design · UX writing · PRD &amp; handover documentation — built from scratch</p>
+          </div>
+          <span class="plus">+</span>
+        </summary>
+        <div class="case-body">
+          <p class="prd-note">As with Bookings, the structure below is a generalized illustration of my process — not a reproduction of the original PRD or internal materials.</p>
+
+          <h5>My role</h5>
+          <p>Like Bookings, Hosted Courses was a 0-to-1 build: I designed the flow, wrote all product copy, authored the PRD, and produced the handover documentation for engineering. This meant defining the full creator-to-student experience from a blank slate — course structuring, pricing, payment, progress tracking, and completion.</p>
+
+          <h5>The problem</h5>
+          <p>Creators were stitching together multiple separate tools — a payment processor, a video host, a certificate generator — just to run one paid course. Hosted Courses needed to consolidate that into one coherent product, simple on both the creator side and the student side, across a global, multi-currency audience.</p>
+
+          <h5>PRD</h5>
+          <ol class="prd-list">
+            <li><b>Purpose &amp; background</b> — Creators were losing time, revenue, and audience reach to fragmented tooling. Hosted Courses is positioned as a native, all-in-one alternative that removes the technical setup barrier to launching a paid course.</li>
+            <li><b>Scope</b> — In scope (v1): module/lesson-based course structure, multi-currency pricing at checkout, student progress tracking, certificate generation on completion. Out of scope (v1): live cohort scheduling, multi-instructor courses (flagged as v2 candidates).</li>
+            <li><b>User personas</b> — <i>The Creator</i>, an expert packaging knowledge into a structured, sellable course; <i>the Student</i>, enrolling from anywhere globally, needing clarity on cost in their own currency, visibility into progress, and proof of completion.</li>
+            <li><b>User flows</b> — The creator builds a course (creates modules, sets pricing, publishes); the student enrolls, pays, progresses through modules, and receives a certificate. Each flow was mapped step-by-step with corresponding screen states and content annotations for handoff.</li>
+            <li><b>Functional requirements</b> — Module/lesson structuring with drag-and-drop ordering; multi-currency pricing displayed in the student's local currency at checkout; a student-facing progress dashboard; certificate template and auto-generation logic triggered on completion; creator-facing analytics on enrollment and completion rates.</li>
+            <li><b>Acceptance criteria</b> — Defined per requirement, e.g. for currency display: given a student outside the creator's home currency, when they view the course price, the price is shown converted to their local currency alongside the base price.</li>
+            <li><b>Edge cases &amp; error states</b> — Refund requests mid-course and their effect on certificate eligibility; partial completion not qualifying for a certificate; currency conversion mismatches between viewing and checkout; a module edited or removed after students have enrolled.</li>
+            <li><b>Dependencies &amp; stakeholders</b> — Coordinated with engineering (course infrastructure, payment integration), design (certificate templates), and support (refund/partial-completion policy language).</li>
+          </ol>
+
+          <h5>Handover documentation</h5>
+          <p>Delivered a handoff package parallel to the Bookings documentation: annotated flow diagrams for both the creator and student journeys, a full content deck mapped to every screen and state, and a QA checklist built directly from the acceptance criteria so testing could be verified against the same source of truth used to build the feature.</p>
+        </div>
+      </details>
+
+      <!-- Link-in-Bio -->
+      <details class="case-study" id="link-in-bio">
+        <summary>
+          <div>
+            <h3 class="card-title">Mainstack — Link-in-Bio</h3>
+            <p class="case-role">Redesign · template system · UX writing</p>
+          </div>
+          <span class="plus">+</span>
+        </summary>
+        <div class="case-body">
+          <p class="prd-note">Generalized to respect confidentiality — describes the type of redesign and approach, not internal materials.</p>
+
+          <h5>My role</h5>
+          <p>I redesigned Link-in-Bio around a template system. Instead of every creator starting from a blank canvas, I designed a set of ready-made templates mapped to distinct creator personas — for example, a coach selling sessions, a course creator, or a creator selling a mix of products — so a new user could self-select the layout closest to their business model and adapt it rather than build a page from zero. I wrote the copy for the templates themselves and for the persona-selection flow that routes a creator to the right starting point.</p>
+
+          <h5>The problem</h5>
+          <p>Link-in-Bio is a creator's single landing page — simultaneously their storefront, their identity, and often their only website. A blank-page starting point was a drop-off point in onboarding: creators didn't have a reference point for what "good" looked like for their specific business, so setup stalled before a page ever went live.</p>
+
+          <h5>Approach</h5>
+          <p>I ran an informal audit of existing creator pages to identify recurring business-model patterns, then consolidated those into a small set of named personas rather than generic "layout 1 / layout 2" options. Each persona template came with its own default copy, structured so it read as a helpful, editable starting point rather than boilerplate a creator had to delete before the page felt like theirs. The persona-selection flow itself was written to route a creator to a match using plain, business-focused language rather than abstract design terminology.</p>
+
+          <h5>Content principles applied</h5>
+          <ul>
+            <li>Persona-first content mapping — copy tailored to the business model, not the layout</li>
+            <li>Progressive disclosure in the setup flow — ask one question, not a form</li>
+            <li>Voice neutrality — template copy brand-agnostic enough to suit a wide range of creators while still feeling specific rather than generic</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Pay-in-Tranches -->
+      <details class="case-study" id="pay-in-tranches">
+        <summary>
+          <div>
+            <h3 class="card-title">Mainstack — Pay-in-Tranches</h3>
+            <p class="case-role">UX writing — copy only (design was already in place)</p>
+          </div>
+          <span class="plus">+</span>
+        </summary>
+        <div class="case-body">
+          <p class="prd-note">Generalized to respect confidentiality — describes the type of writing problem and approach, not internal materials.</p>
+
+          <h5>My role</h5>
+          <p>Pay-in-Tranches already existed as a shipped feature when I joined this work — my scope was copy, not design or product definition. The feature let creators split a customer's payment into 2, 3, or 4 installments, but the underlying concept was written in financial/technical language that didn't translate to a non-financial, often first-time buyer.</p>
+
+          <h5>The problem</h5>
+          <p>A customer isn't completing one transaction with Pay-in-Tranches, they're entering an ongoing payment commitment — so ambiguous copy directly threatens checkout completion and trust. The existing language leaned on internal terminology without translating it into what a buyer was actually agreeing to.</p>
+
+          <h5>Content strategy</h5>
+          <p>Rather than a screen-by-screen rewrite in isolation, I approached this as a microcopy audit: I inventoried every touchpoint where a customer encountered payment-plan language and rewrote them against a single content principle — always state the concrete number, amount, and date, never the abstract mechanism. I also wrote a short internal style note for the pattern so future copy on the feature stayed consistent.</p>
+        </div>
+      </details>
+
+      <!-- Blood Donation App -->
+      <details class="case-study" id="blood-donation">
+        <summary>
+          <div>
+            <h3 class="card-title">Blood Donation App</h3>
+            <p class="case-role">Product design</p>
+          </div>
+          <span class="plus">+</span>
+        </summary>
+        <div class="case-body">
+          <h5>The problem</h5>
+          <p>Blood donation apps solve a matching problem under pressure: connecting an urgent need — a hospital or patient requiring a specific blood type, often on a tight timeline — with a nearby, eligible, willing donor. Most of these apps fail in the same two places: the emergency request flow reads as alarming rather than clear, and the donor eligibility questions are written in clinical language that confuses people who'd otherwise be happy to donate.</p>
+
+          <h5>What I focused on</h5>
+          <p>Onboarding and eligibility copy, and the emergency request flow — writing for two very different emotional states in the same product: a donor calmly signing up, and a requester in genuine crisis.</p>
+
+          <h5>Design/writing decisions</h5>
+          <ul>
+            <li>Kept emergency request screens short and directive rather than clinical, so urgency reads as clarity, not panic</li>
+            <li>Rewrote eligibility questions in plain language, turning clinical exclusion criteria into plain yes/no questions</li>
+            <li>Built trust into steps that ask for sensitive health/location data by explaining, in one line, why each piece of information was needed before asking for it</li>
+          </ul>
+          <a class="link-out" href="https://www.behance.net/toluwaniodedeyi" target="_blank" rel="noopener">View on Behance →</a>
+        </div>
+      </details>
+
+      <!-- Tour Guide -->
+      <details class="case-study" id="tour-guide">
+        <summary>
+          <div>
+            <h3 class="card-title">Tour Guide Website</h3>
+            <p class="case-role">Content design</p>
+          </div>
+          <span class="plus">+</span>
+        </summary>
+        <div class="case-body">
+          <h5>The problem</h5>
+          <p>Travel discovery sites have to do two contradictory things in the same sentence: make a place feel worth visiting and make it easy to actually plan or book. Sites that lean too far into inspiration become beautiful but unusable; sites that lean too far into usability read like a spreadsheet.</p>
+
+          <h5>What I focused on</h5>
+          <p>Content structure from destination to experience to booking, and the microcopy connecting each step — making sure every "explore" moment had a clear, low-pressure next action.</p>
+
+          <h5>Design/writing decisions</h5>
+          <ul>
+            <li>Structured content hierarchy so a visitor could move from browsing destinations to booking a specific experience without hitting a dead end</li>
+            <li>Wrote CTAs that invited rather than pushed, to match the browsing mindset of someone still deciding</li>
+            <li>Kept destination copy sensory and specific rather than generic</li>
+          </ul>
+          <a class="link-out" href="https://www.behance.net/toluwaniodedeyi" target="_blank" rel="noopener">View on Behance →</a>
+        </div>
+      </details>
+
+    </section>
+
+    <section id="instructional">
+      <h2 class="section-title">Instructional Writing</h2>
+      <span class="tag">Canvas / Syllabus Design</span>
+      <blockquote class="instructional-quote">A syllabus is documentation. It's the first onboarding artifact a student ever touches for a course — and like any good onboarding doc, it has to work for a total stranger with zero context, no one to ask, and real consequences if they misunderstand it.</blockquote>
+      <p>As an Instructor of Record at the University of Florida, I design and maintain the Canvas course infrastructure for ENC 1136 (Multimodal Writing and Digital Literacy) and previously ENC 1102 (Argument and Persuasion) — syllabi, assignment instructions, grading rubrics, and module sequencing that students rely on with no other point of contact. I treat it exactly like product onboarding: what does a first-time user need to know before they can act, what's the minimum information at each step, and where do people get stuck if I don't pre-empt it in the copy itself.</p>
+      <p><i>The skills are identical — audience analysis, information hierarchy, anticipating confusion before it happens, revising based on real user behavior. The only difference is the interface.</i></p>
+    </section>
+
+    <section id="social">
+      <h2 class="section-title">Content &amp; Social Media</h2>
+      <div class="social-role">
+        <h4>Communications &amp; Digital Media Support — ATTW</h4>
+        <p>Managing the official website and social channels, designing promotional materials and coordinating digital outreach for the 2026 ATTW Conference — increasing visibility for calls for proposals and registration.</p>
+      </div>
+      <div class="social-role">
+        <h4>Communications Lead — Placements</h4>
+        <p>Planned and executed communications and media strategy across online and social channels; wrote website copy that improved user experience.</p>
+      </div>
+      <div class="social-role">
+        <h4>Features Writer — DearDesigner</h4>
+        <p>Documented featured Nigerian designers for the blog; helped coordinate the DearDesigner mentorship program.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Résumé &amp; Contact</h2>
+      <p>Download my résumé or reach out directly — I'd love to talk.</p>
+      <div class="cta-row">
+        <a href="Toluwani_Odedeyi_CV.pdf">Download Résumé (PDF)</a>
+        <a href="mailto:toluwani.odedeyi@ufl.edu">toluwani.odedeyi@ufl.edu</a>
+        <a href="https://linkedin.com/in/toluwani-odedeyi" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.behance.net/toluwaniodedeyi" target="_blank" rel="noopener">Behance</a>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      © 2026 Toluwani Odedeyi. Built with care.
+    </footer>
+
+  </main>
+</div>
+</body>
+</html>
