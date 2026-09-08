@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toluwani Odedeyi — UX Writer &amp; Technical Writer</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%231F4B4B'/%3E%3Ctext x='50' y='66' font-size='42' font-family='Georgia,serif' fill='%23EFEDE7' text-anchor='middle'%3ETO%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFEDE7;
+    --paper-raised:#F7F5F1;
+    --ink:#1B1B1F;
+    --ink-soft:#54534C;
+    --teal:#1F4B4B;
+    --teal-soft:#DCE6E4;
+    --ochre:#C08A3E;
+    --ochre-soft:#F1E4CC;
+    --line:#D8D5CC;
+    --serif:'Source Serif 4', Georgia, serif;
+    --sans:'IBM Plex Sans', -apple-system, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background-color:var(--paper);
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.6;
+  }
+  a{color:var(--teal);}
+  ::selection{background:var(--ochre-soft); color:var(--ink);}
+  .layout{
+    display:grid;
+    grid-template-columns:230px 1fr;
+    min-height:100vh;
+  }
+  /* Sidebar nav */
+  nav.side{
+    position:sticky;
+    top:0;
+    height:100vh;
+    padding:2.5rem 1.5rem;
+    border-right:1px solid var(--line);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  .brand-row{
+    display:flex;
+    align-items:center;
+    gap:0.7rem;
+    margin-bottom:2.5rem;
+  }
+  .monogram{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:var(--teal);
+    color:var(--paper);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:0.9rem;
+    flex-shrink:0;
+  }
+  nav.side .brand{
+    font-family:var(--serif);
+    font-size:1.15rem;
+    font-weight:600;
+    line-height:1.3;
+  }
+  nav.side .brand span{
+    display:block;
+    font-family:var(--sans);
+    font-size:0.78rem;
+    font-weight:400;
+    color:var(--ink-soft);
+    margin-top:0.3rem;
+  }
+  nav.side ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+  }
+  nav.side li{margin-bottom:0.25rem;}
+  nav.side a{
+    text-decoration:none;
+    color:var(--ink);
+    font-size:0.92rem;
+    border-left:2px solid transparent;
+    padding:0.28rem 0.7rem;
+    border-radius:0 6px 6px 0;
+    display:block;
+    transition:background-color .15s ease, color .15s ease, border-color .15s ease;
+  }
+  nav.side a:hover{
+    border-left-color:var(--teal);
+    color:var(--teal);
+  }
+  nav.side a.active{
+    border-left-color:var(--teal);
+    color:var(--teal);
+    font-weight:600;
+    background:var(--teal-soft);
+  }
+  nav.side .sub{
+    padding-left:1.5rem;
+    margin-top:0.15rem;
+  }
+  nav.side .sub a{
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    padding:0.2rem 0.7rem;
+  }
+  nav.side .sub a.active{color:var(--teal); background:var(--teal-soft);}
+  nav.side footer{
+    font-size:0.78rem;
+    color:var(--ink-soft);
+  }
+  nav.side footer a{display:inline-block; margin-right:0.6rem;}
+
+  main{padding:0;}
+  section{
+    position:relative;
+    padding:4.5rem 4rem;
+    border-bottom:1px solid var(--line);
+    max-width:920px;
+  }
+  section:last-of-type{border-bottom:none;}
+  section:not(:last-of-type)::after{
+    content:'';
+    position:absolute;
+    left:4rem;
+    bottom:-1px;
+    width:44px;
+    height:3px;
+    background:var(--ochre);
+  }
+  .section-index{
+    display:block;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:0.9rem;
+    color:var(--ochre);
+    margin-bottom:0.5rem;
+  }
+
+  /* Hero */
+  #home{padding-top:5.5rem; overflow:hidden;}
+  .hero-decor{
+    position:absolute;
+    top:-4rem;
+    right:-3rem;
+    width:340px;
+    height:340px;
+    pointer-events:none;
+    z-index:0;
+    opacity:0.55;
+  }
+  .home-content{position:relative; z-index:1;}
+  .eyebrow-name{
+    font-family:var(--sans);
+    font-size:0.95rem;
+    color:var(--ink-soft);
+    margin:0 0 1.4rem 0;
+  }
+  h1.hook{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:2.35rem;
+    line-height:1.35;
+    max-width:15ch;
+    margin:0 0 1.6rem 0;
+  }
+  h1.hook .hl{position:relative; white-space:nowrap;}
+  h1.hook .hl::after{
+    content:'';
+    position:absolute;
+    left:-3%;
+    right:-3%;
+    bottom:0.02em;
+    height:0.32em;
+    background:var(--ochre-soft);
+    z-index:-1;
+    transform:skew(-4deg);
+  }
+  .hero-body p{
+    font-size:1.05rem;
+    max-width:62ch;
+    color:#2c2c2c;
+  }
+  .hero-sub{
+    font-size:0.98rem;
+    color:var(--ink-soft);
+    max-width:62ch;
+    margin-top:1.8rem;
+  }
+  .cta-row{
+    margin-top:2rem;
+    display:flex;
+    gap:1.4rem;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+  .cta-row a, button.copy-email{
+    font-family:var(--sans);
+    font-size:0.92rem;
+    text-decoration:none;
+    color:var(--ink);
+    border-bottom:1px solid var(--ink);
+    padding-bottom:2px;
+  }
+  .cta-row a:hover{color:var(--teal); border-color:var(--teal);}
+  .cta-row a.btn-primary{
+    background:var(--teal);
+    color:var(--paper)!important;
+    border-bottom:none!important;
+    padding:0.55rem 1.1rem;
+    border-radius:6px;
+  }
+  .cta-row a.btn-primary:hover{background:#163b3b;}
+  button.copy-email{
+    background:none;
+    border-top:none;
+    border-left:none;
+    border-right:none;
+    padding-left:0;
+    cursor:pointer;
+  }
+  button.copy-email:hover, button.copy-email.copied{color:var(--teal); border-color:var(--teal);}
+
+  h2.section-title{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1.7rem;
+    margin:0 0 1.6rem 0;
+  }
+  h3.card-title{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1.25rem;
+    margin:0;
+  }
+  .tag{
+    display:inline-block;
+    font-size:0.75rem;
+    color:var(--teal);
+    background:var(--teal-soft);
+    padding:0.2rem 0.6rem;
+    border-radius:3px;
+    margin-bottom:0.9rem;
+  }
+
+  /* About timeline */
+  .timeline{
+    list-style:none;
+    padding:0 0 0 1.4rem;
+    margin:1.7rem 0 1.2rem;
+    border-left:2px solid var(--line);
+  }
+  .timeline li{
+    position:relative;
+    padding:0 0 1.2rem 1rem;
+    font-size:0.92rem;
+    color:var(--ink-soft);
+  }
+  .timeline li:last-child{padding-bottom:0;}
+  .timeline li::before{
+    content:'';
+    position:absolute;
+    left:-1.5rem;
+    top:0.35rem;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--teal);
+    box-shadow:0 0 0 3px var(--teal-soft);
+  }
+  .timeline b{color:var(--ink); font-weight:600;}
+  .tools-row{font-size:0.85rem; color:var(--ink-soft);}
+
+  /* Case study filter */
+  .filter-row{
+    display:flex;
+    gap:0.6rem;
+    flex-wrap:wrap;
+    margin:1.6rem 0 2rem;
+  }
+  .filter-btn{
+    font-family:var(--sans);
+    font-size:0.82rem;
+    background:none;
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+    padding:0.4rem 0.9rem;
+    border-radius:999px;
+    cursor:pointer;
+  }
+  .filter-btn:hover{border-color:var(--teal); color:var(--teal);}
+  .filter-btn.is-active{background:var(--teal); border-color:var(--teal); color:var(--paper);}
+
+  .confidentiality-note{
+    background:var(--paper-raised);
+    border-left:3px solid var(--ochre);
+    padding:1rem 1.3rem;
+    font-size:0.88rem;
+    color:var(--ink-soft);
+    margin-bottom:1.6rem;
+  }
+
+  details.case-study{
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:1.5rem 1.6rem;
+    margin-bottom:1.1rem;
+    background:var(--paper-raised);
+    transition:box-shadow .25s ease, border-color .25s ease, transform .25s ease;
+  }
+  details.case-study:hover{
+    border-color:var(--teal);
+    box-shadow:0 10px 24px rgba(27,27,31,0.07);
+    transform:translateY(-2px);
+  }
+  details.case-study summary{
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:1rem;
+  }
+  details.case-study summary::-webkit-details-marker{display:none;}
+  .chevron{
+    width:18px;
+    height:18px;
+    color:var(--teal);
+    flex-shrink:0;
+    margin-top:0.3rem;
+    transition:transform .25s ease;
+  }
+  details.case-study[open] .chevron{transform:rotate(180deg);}
+  .title-row{display:flex; align-items:center; gap:0.8rem;}
+  .icon-badge{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:var(--teal-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .case-study[data-category="personal"] .icon-badge{background:var(--ochre-soft);}
+  .case-study[data-category="personal"] .case-icon{color:var(--ochre);}
+  .case-icon{width:18px; height:18px; color:var(--teal); flex-shrink:0;}
+  .tag-mainstack, .tag-personal{
+    display:inline-block;
+    font-size:0.72rem;
+    padding:0.1rem 0.5rem;
+    border-radius:3px;
+    margin-left:0.5rem;
+    vertical-align:middle;
+  }
+  .tag-mainstack{background:var(--teal-soft); color:var(--teal);}
+  .tag-personal{background:var(--ochre-soft); color:var(--ochre);}
+  .case-role{font-size:0.85rem; color:var(--ink-soft); margin:0.3rem 0 0 0;}
+  .case-body{margin-top:1.4rem; overflow:hidden;}
+  .case-body h5{
+    font-family:var(--sans);
+    font-size:0.82rem;
+    color:var(--teal);
+    margin:1.3rem 0 0.35rem 0;
+    font-weight:600;
+  }
+  .case-body p, .case-body li{
+    font-size:0.94rem;
+    color:#2c2c2c;
+  }
+  .case-body ul{padding-left:1.2rem; margin:0.4rem 0;}
+
+  .fact-chips{display:flex; flex-wrap:wrap; gap:0.5rem; margin:1.1rem 0 1.3rem;}
+  .chip{
+    font-size:0.78rem;
+    padding:0.25rem 0.65rem;
+    border:1px solid var(--line);
+    border-radius:999px;
+    color:var(--ink-soft);
+    background:var(--paper-raised);
+  }
+
+  .case-summary-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1.3rem;
+    margin-bottom:0.4rem;
+  }
+  .case-summary-label{
+    display:block;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    color:var(--teal);
+    font-weight:600;
+    margin-bottom:0.35rem;
+  }
+  .case-summary-grid p{margin:0;}
+
+  .nested-toggle{
+    margin-top:1.1rem;
+    border-top:1px dashed var(--line);
+    padding-top:1rem;
+  }
+  .nested-toggle summary{
+    cursor:pointer;
+    list-style:none;
+    font-size:0.85rem;
+    color:var(--teal);
+  }
+  .nested-toggle summary::-webkit-details-marker{display:none;}
+  .nested-toggle summary::before{content:'+ ';}
+  .nested-toggle[open] summary::before{content:'– ';}
+
+  .prd-list{
+    counter-reset:prd;
+    padding:0;
+    list-style:none;
+    margin-top:0.9rem;
+  }
+  .prd-list li{
+    counter-increment:prd;
+    margin-bottom:0.9rem;
+    padding-left:1.6rem;
+    position:relative;
+    font-size:0.9rem;
+  }
+  .prd-list li::before{
+    content:counter(prd);
+    position:absolute;
+    left:0;
+    top:0.05rem;
+    font-family:var(--serif);
+    font-size:0.8rem;
+    color:var(--teal);
+    border:1px solid var(--teal);
+    width:1.1rem;
+    height:1.1rem;
+    border-radius:50%;
+    text-align:center;
+    line-height:1.05rem;
+  }
+  .prd-list b{font-weight:600;}
+  .link-out{
+    display:inline-block;
+    margin-top:1rem;
+    font-size:0.85rem;
+  }
+
+  .instructional-quote{
+    position:relative;
+    font-family:var(--serif);
+    font-size:1.15rem;
+    font-style:italic;
+    color:var(--ink);
+    border-left:3px solid var(--teal);
+    padding:0.2rem 0 0 2rem;
+    margin:1.5rem 0;
+  }
+  .instructional-quote::before{
+    content:'“';
+    position:absolute;
+    left:0.7rem;
+    top:-0.5rem;
+    font-family:var(--serif);
+    font-style:normal;
+    font-size:2.6rem;
+    color:var(--ochre);
+    line-height:1;
+  }
+
+  .social-role{
+    margin-bottom:1.3rem;
+  }
+  .social-role h4{
+    font-family:var(--serif);
+    font-size:1.05rem;
+    margin:0 0 0.2rem 0;
+  }
+  .social-role p{margin:0; font-size:0.92rem; color:var(--ink-soft);}
+
+  footer.site-footer{
+    padding:2.5rem 4rem 3rem;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:0.8rem;
+  }
+  .back-to-top{
+    font-size:0.82rem;
+    text-decoration:none;
+    color:var(--ink-soft);
+    border-bottom:1px solid transparent;
+  }
+  .back-to-top:hover{color:var(--teal); border-color:var(--teal);}
+
+  .reveal{opacity:0; transform:translateY(10px); transition:opacity 0.5s ease, transform 0.5s ease;}
+  .reveal.is-visible{opacity:1; transform:none;}
+
+  @media (max-width:820px){
+    .layout{grid-template-columns:1fr;}
+    nav.side{
+      position:relative;
+      height:auto;
+      flex-direction:row;
+      align-items:center;
+      justify-content:space-between;
+      padding:1.2rem 1.5rem;
+      border-right:none;
+      border-bottom:1px solid var(--line);
+    }
+    nav.side ul{display:none;}
+    nav.side footer{display:none;}
+    .brand-row{margin-bottom:0;}
+    section{padding:3rem 1.5rem;}
+    section:not(:last-of-type)::after{left:1.5rem;}
+    h1.hook{font-size:1.8rem;}
+    .case-summary-grid{grid-template-columns:1fr;}
+    .hero-decor{width:220px; height:220px; top:-2rem; right:-2rem;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1!important; transform:none!important; transition:none!important;}
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <nav class="side">
+    <div>
+      <div class="brand-row">
+        <div class="monogram" aria-hidden="true">TO</div>
+        <div class="brand">Toluwani Odedeyi<span>UX Writer &amp; Technical Writer</span></div>
+      </div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#case-studies">Case Studies</a>
+          <ul class="sub">
+            <li><a href="#bookings">Bookings</a></li>
+            <li><a href="#hosted-courses">Hosted Courses</a></li>
+            <li><a href="#link-in-bio">Link-in-Bio</a></li>
+            <li><a href="#pay-in-tranches">Pay-in-Tranches</a></li>
+            <li><a href="#blood-donation">Blood Donation App</a></li>
+            <li><a href="#tour-guide">Tour Guide Website</a></li>
+          </ul>
+        </li>
+        <li><a href="#instructional">Instructional Writing</a></li>
+        <li><a href="#social">Content &amp; Social</a></li>
+        <li><a href="#contact">Résumé / Contact</a></li>
+      </ul>
+    </div>
+    <footer>
+      <a href="https://www.behance.net/toluwaniodedeyi" target="_blank" rel="noopener">Behance</a>
+      <a href="http://dribbble.com/ToluwaniDesigns" target="_blank" rel="noopener">Dribbble</a>
+      <a href="https://linkedin.com/in/toluwani-odedeyi" target="_blank" rel="noopener">LinkedIn</a>
+    </footer>
+  </nav>
+
+  <main>
+
+    <section id="home">
+      <svg class="hero-decor" viewBox="0 0 340 340" fill="none" aria-hidden="true">
+        <circle cx="230" cy="110" r="120" fill="var(--teal-soft)"/>
+        <circle cx="150" cy="230" r="6" fill="var(--ochre)"/>
+        <path d="M40 60 Q120 20 190 70" stroke="var(--ochre)" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="home-content">
+        <p class="eyebrow-name">Toluwani Odedeyi</p>
+        <h1 class="hook">I love the moment something <span class="hl">confusing</span> suddenly makes sense.</h1>
+        <div class="hero-body">
+          <p>I am Toluwani. I write the words that make complicated products make sense.</p>
+        </div>
+        <p class="hero-sub">UX Writer &amp; Technical Writer. Formerly a UX Writer &amp; Designer at Mainstack. Now a PhD candidate in UX &amp; Technical Communication at the University of Florida.</p>
+        <div class="cta-row">
+          <a class="btn-primary" href="Toluwani_Odedeyi_CV.pdf">Résumé</a>
+          <a href="https://www.behance.net/toluwaniodedeyi" target="_blank" rel="noopener">Behance</a>
+          <a href="http://dribbble.com/ToluwaniDesigns" target="_blank" rel="noopener">Dribbble</a>
+          <a href="https://linkedin.com/in/toluwani-odedeyi" target="_blank" rel="noopener">LinkedIn</a>
+          <button type="button" class="copy-email" data-email="toluwani.odedeyi@ufl.edu">Email</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="reveal">
+      <span class="section-index">01</span>
+      <h2 class="section-title">About</h2>
+      <p>My background is in Linguistics, but I kept running into the same problem everywhere: people don't get stuck because something is hard — they get stuck because it's confusing. That's what pulled me from writing into UX and technical writing.</p>
+      <p>At Mainstack, I designed and wrote two products from scratch — Bookings and Hosted Courses — including the PRDs and every word of copy that shipped. I also redesigned Link-in-Bio around real creator personas, and rewrote Pay-in-Tranches so a fairly technical payment feature felt simple to first-time buyers. I've led content and communications for Placements and DearDesigner, and I currently teach multimodal writing at the University of Florida, where I write the syllabi and course docs students rely on with no one else to ask.</p>
+      <p>My MA and PhD research at UF looks at how people actually read and act on instructions — the same question behind every project below.</p>
+      <ul class="timeline">
+        <li><b>PhD (in progress) &amp; MA, English</b> — UX &amp; Tech Comm, University of Florida</li>
+        <li><b>UX Designer &amp; Writer</b> — Mainstack (2023–2024)</li>
+        <li><b>Instructor of Record</b> — University of Florida · Teaching Excellence Award, 2026</li>
+      </ul>
+      <p class="tools-row">Tools: Figma, Notion, Miro, Canvas</p>
+    </section>
+
+    <section id="case-studies" class="reveal">
+      <span class="section-index">02</span>
+      <h2 class="section-title">Case Studies</h2>
+
+      <div class="confidentiality-note">
+        A few details below are generalized to respect confidentiality — metrics and internal docs are approximated, not reproduced.
+      </div>
+
+      <div class="filter-row" role="group" aria-label="Filter case studies">
+        <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">All</button>
+        <button type="button" class="filter-btn" data-filter="mainstack" aria-pressed="false">Mainstack work</button>
+        <button type="button" class="filter-btn" data-filter="personal" aria-pressed="false">Personal projects</button>
+      </div>
+
+      <!-- Bookings -->
+      <details class="case-study" id="bookings" data-category="mainstack">
+        <summary>
+          <div>
+            <div class="title-row">
+              <div class="icon-badge"><svg class="case-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/><path d="M12 13v3l2 1.2"/></svg></div>
+              <h3 class="card-title">Mainstack — Bookings<span class="tag-mainstack">Mainstack</span></h3>
+            </div>
+            <p class="case-role">Product design · UX writing · PRD — built from scratch</p>
+          </div>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="case-body">
+          <div class="fact-chips">
+            <span class="chip">0→1 build</span>
+            <span class="chip">Solo design + writing</span>
+            <span class="chip">PRD + handoff docs</span>
+          </div>
+          <div class="case-summary-grid">
+            <div>
+              <span class="case-summary-label">Problem</span>
+              <p>Creators had no way to sell time — consultations, calls, sessions — without juggling a calendar app, an invoicing tool, and DMs.</p>
+            </div>
+            <div>
+              <span class="case-summary-label">What I did</span>
+              <p>Designed the booking flow, wrote every screen, and authored the PRD engineering built from. No existing product to redesign — just a blank page.</p>
+            </div>
+            <div>
+              <span class="case-summary-label">Result</span>
+              <p>One flow that handles availability, payment, and confirmation across time zones, with no manual back-and-forth.</p>
+            </div>
+          </div>
+
+          <details class="nested-toggle">
+            <summary>Full PRD breakdown</summary>
+            <ol class="prd-list">
+              <li><b>Purpose</b> — Replace scattered scheduling tools with one native booking-and-payment flow.</li>
+              <li><b>Scope</b> — v1: single-creator availability, 1:1 bookings, combined payment, automated reminders, cancellation policy. Out of scope: group bookings, calendar sync (v2).</li>
+              <li><b>Personas</b> — The Creator, who manages availability and needs protection from no-shows; the Client, who needs certainty on time, timezone, and payment.</li>
+              <li><b>User flows</b> — Creator sets availability and publishes slots; client books a slot, pays, and gets confirmation.</li>
+              <li><b>Functional requirements</b> — Availability calendar, automatic timezone conversion, combined checkout, confirmation/reminder notifications, cancellation flow.</li>
+              <li><b>Acceptance criteria</b> — e.g. a client always sees slot times converted to their own timezone, with the creator's timezone shown for reference.</li>
+              <li><b>Edge cases</b> — Double bookings, cancellation after payment, daylight-saving shifts, a failed payment on a held slot.</li>
+              <li><b>Dependencies</b> — Engineering (booking logic, payments), design (visual system), support (refund policy language).</li>
+            </ol>
+          </details>
+        </div>
+      </details>
+
+      <!-- Hosted Courses -->
+      <details class="case-study" id="hosted-courses" data-category="mainstack">
+        <summary>
+          <div>
+            <div class="title-row">
+              <div class="icon-badge"><svg class="case-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5v-17Z"/><path d="M4 4.5v17"/><path d="M10 8l5 3-5 3V8Z"/></svg></div>
+              <h3 class="card-title">Mainstack — Hosted Courses<span class="tag-mainstack">Mainstack</span></h3>
+            </div>
+            <p class="case-role">Product design · UX writing · PRD — built from scratch</p>
+          </div>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="case-body">
+          <div class="fact-chips">
+            <span class="chip">0→1 build</span>
+            <span class="chip">Multi-currency</span>
+            <span class="chip">PRD + handoff docs</span>
+          </div>
+          <div class="case-summary-grid">
+            <div>
+              <span class="case-summary-label">Problem</span>
+              <p>Creators were stitching together a payment processor, a video host, and a certificate tool just to run one paid course.</p>
+            </div>
+            <div>
+              <span class="case-summary-label">What I did</span>
+              <p>Designed the full creator-to-student flow and wrote the PRD and every word of copy, from course setup to certificate.</p>
+            </div>
+            <div>
+              <span class="case-summary-label">Result</span>
+              <p>One product that works the same way for creators and students anywhere, in their own currency.</p>
+            </div>
+          </div>
+
+          <details class="nested-toggle">
+            <summary>Full PRD breakdown</summary>
+            <ol class="prd-list">
+              <li><b>Purpose</b> — Replace fragmented tooling with one native course platform.</li>
+              <li><b>Scope</b> — v1: modules/lessons, multi-currency pricing, progress tracking, certificates. Out of scope: live cohorts, multi-instructor courses (v2).</li>
+              <li><b>Personas</b> — The Creator, packaging expertise into a course; the Student, enrolling from anywhere, needing price in their own currency and proof of progress.</li>
+              <li><b>User flows</b> — Creator builds and publishes a course; student enrolls, pays, progresses through modules, and gets a certificate.</li>
+              <li><b>Functional requirements</b> — Drag-and-drop module ordering, currency conversion at checkout, a progress dashboard, certificate generation, creator-facing analytics.</li>
+              <li><b>Acceptance criteria</b> — e.g. course price is always shown converted to the student's local currency, alongside the base price.</li>
+              <li><b>Edge cases</b> — Refunds mid-course, partial completion, currency mismatches, a module edited after students have enrolled.</li>
+              <li><b>Dependencies</b> — Engineering (infrastructure, payments), design (certificate templates), support (refund policy language).</li>
+            </ol>
+          </details>
+        </div>
+      </details>
+
+      <!-- Link-in-Bio -->
+      <details class="case-study" id="link-in-bio" data-category="mainstack">
+        <summary>
+          <div>
+            <div class="title-row">
+              <div class="icon-badge"><svg class="case-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 15l6-6"/><path d="M11 5.5 12.5 4A3.5 3.5 0 1 1 17.5 9l-1.5 1.5"/><path d="M13 18.5 11.5 20A3.5 3.5 0 1 1 6.5 15l1.5-1.5"/></svg></div>
+              <h3 class="card-title">Mainstack — Link-in-Bio<span class="tag-mainstack">Mainstack</span></h3>
+            </div>
+            <p class="case-role">Redesign · template system · UX writing</p>
+          </div>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="case-body">
+          <div class="fact-chips">
+            <span class="chip">Persona-based templates</span>
+            <span class="chip">UX writing</span>
+          </div>
+          <div class="case-summary-grid">
+            <div>
+              <span class="case-summary-label">Problem</span>
+              <p>Link-in-Bio is often a creator's only website — but starting from a blank page stalled a lot of people before it ever went live.</p>
+            </div>
+            <div>
+              <span class="case-summary-label">What I did</span>
+              <p>Designed templates built around real creator types — a coach, a course seller, a product seller — and wrote the copy for each one and the flow that routes creators to the right fit.</p>
+            </div>
+            <div>
+              <span class="case-summary-label">Result</span>
+              <p>A faster, less intimidating setup — creators start from something that already looks and sounds like their business.</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- Pay-in-Tranches -->
+      <details class="case-study" id="pay-in-tranches" data-category="mainstack">
+        <summary>
+          <div>
+            <div class="title-row">
+              <div class="icon-badge"><svg class="case-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="9" cy="8" rx="6" ry="3.2"/><path d="M3 8v3c0 1.77 2.69 3.2 6 3.2s6-1.43 6-3.2V8"/><ellipse cx="15" cy="15" rx="6" ry="3.2"/><path d="M9 15v3c0 1.77 2.69 3.2 6 3.2s6-1.43 6-3.2v-3"/></svg></div>
+              <h3 class="card-title">Mainstack — Pay-in-Tranches<span class="tag-mainstack">Mainstack</span></h3>
+            </div>
+            <p class="case-role">UX writing — copy only</p>
+          </div>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="case-body">
+          <div class="fact-chips">
+            <span class="chip">Microcopy audit</span>
+            <span class="chip">Copy only</span>
+          </div>
+          <div class="case-summary-grid">
+            <div>
+              <span class="case-summary-label">Problem</span>
+              <p>Pay-in-Tranches let customers split a payment into installments, but the copy leaned on financial jargon that confused first-time buyers.</p>
+            </div>
+            <div>
+              <span class="case-summary-label">What I did</span>
+              <p>Audited every screen where a customer saw payment-plan language and rewrote it around one rule: always state the amount and the date, never the mechanism.</p>
+            </div>
+            <div>
+              <span class="case-summary-label">Result</span>
+              <p>Clearer checkout copy that tells a buyer exactly what they're agreeing to, plus a short style note so future copy stays consistent.</p>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- Blood Donation App -->
+      <details class="case-study" id="blood-donation" data-category="personal">
+        <summary>
+          <div>
+            <div class="title-row">
+              <div class="icon-badge"><svg class="case-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s7 8.1 7 12.5A7 7 0 1 1 5 15.5C5 11.1 12 3 12 3Z"/></svg></div>
+              <h3 class="card-title">Blood Donation App<span class="tag-personal">Personal</span></h3>
+            </div>
+            <p class="case-role">Product design</p>
+          </div>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="case-body">
+          <div class="fact-chips">
+            <span class="chip">Personal project</span>
+          </div>
+          <div class="case-summary-grid">
+            <div>
+              <span class="case-summary-label">Problem</span>
+              <p>Most blood donation apps get two things wrong: the emergency flow feels alarming instead of clear, and eligibility questions use clinical language that puts people off donating.</p>
+            </div>
+            <div>
+              <span class="case-summary-label">What I did</span>
+              <p>Rewrote the emergency flow to be short and direct, turned clinical eligibility questions into plain yes/no ones, and explained in one line why sensitive info was needed before asking for it.</p>
+            </div>
+            <div>
+              <span class="case-summary-label">Result</span>
+              <p>A calmer sign-up for donors, and a request flow built for people acting under real pressure.</p>
+            </div>
+          </div>
+          <a class="link-out" href="https://www.behance.net/toluwaniodedeyi" target="_blank" rel="noopener">View on Behance →</a>
+        </div>
+      </details>
+
+      <!-- Tour Guide -->
+      <details class="case-study" id="tour-guide" data-category="personal">
+        <summary>
+          <div>
+            <div class="title-row">
+              <div class="icon-badge"><svg class="case-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.7 7-11.8A7 7 0 1 0 5 9.2C5 14.3 12 21 12 21Z"/><circle cx="12" cy="9.3" r="2.4"/></svg></div>
+              <h3 class="card-title">Tour Guide Website<span class="tag-personal">Personal</span></h3>
+            </div>
+            <p class="case-role">Content design</p>
+          </div>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="case-body">
+          <div class="fact-chips">
+            <span class="chip">Personal project</span>
+          </div>
+          <div class="case-summary-grid">
+            <div>
+              <span class="case-summary-label">Problem</span>
+              <p>Travel sites often pick one lane — beautiful and hard to use, or usable and dull — instead of doing both.</p>
+            </div>
+            <div>
+              <span class="case-summary-label">What I did</span>
+              <p>Structured content from destination to experience to booking, and wrote CTAs that invited rather than pushed, matching how someone browses while still deciding.</p>
+            </div>
+            <div>
+              <span class="case-summary-label">Result</span>
+              <p>A clear path from browsing to booking, without losing the sense of a place worth visiting.</p>
+            </div>
+          </div>
+          <a class="link-out" href="https://www.behance.net/toluwaniodedeyi" target="_blank" rel="noopener">View on Behance →</a>
+        </div>
+      </details>
+
+    </section>
+
+    <section id="instructional" class="reveal">
+      <span class="section-index">03</span>
+      <h2 class="section-title">Instructional Writing</h2>
+      <span class="tag">Canvas / Syllabus Design</span>
+      <blockquote class="instructional-quote">A syllabus is the first onboarding document a student sees. It has to work for a total stranger, with no one to ask.</blockquote>
+      <p>As an Instructor of Record at the University of Florida, I build the Canvas course pages for ENC 1136 (and previously ENC 1102) — syllabi, assignment instructions, rubrics, and module sequencing that students rely on with no other point of contact. I treat it like product onboarding: what does someone need to know before they can act, and where will they get stuck if I don't address it in the copy itself?</p>
+      <p><i>The skills are the same as UX writing — audience analysis, information hierarchy, anticipating confusion before it happens. Only the interface changes.</i></p>
+    </section>
+
+    <section id="social" class="reveal">
+      <span class="section-index">04</span>
+      <h2 class="section-title">Content &amp; Social Media</h2>
+      <div class="social-role">
+        <h4>Communications &amp; Digital Media Support — ATTW</h4>
+        <p>Ran the website and social channels for the 2026 ATTW Conference, and designed materials to promote it.</p>
+      </div>
+      <div class="social-role">
+        <h4>Communications Lead — Placements</h4>
+        <p>Led communications and media strategy across online channels, and wrote website copy that made things easier to use.</p>
+      </div>
+      <div class="social-role">
+        <h4>Features Writer — DearDesigner</h4>
+        <p>Wrote designer profiles for the blog and helped run the mentorship program.</p>
+      </div>
+    </section>
+
+    <section id="contact" class="reveal">
+      <span class="section-index">05</span>
+      <h2 class="section-title">Résumé &amp; Contact</h2>
+      <p>Download my résumé or reach out directly — I'd love to talk.</p>
+      <div class="cta-row">
+        <a href="Toluwani_Odedeyi_CV.pdf">Download Résumé (PDF)</a>
+        <button type="button" class="copy-email" data-email="toluwani.odedeyi@ufl.edu">toluwani.odedeyi@ufl.edu</button>
+        <a href="https://linkedin.com/in/toluwani-odedeyi" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.behance.net/toluwaniodedeyi" target="_blank" rel="noopener">Behance</a>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <span>© 2026 Toluwani Odedeyi.</span>
+      <a class="back-to-top" href="#home">↑ Back to top</a>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+(function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scrollspy — highlight the current section's link in the sidebar
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('nav.side a[href^="#"]'));
+  var byId = {};
+  navLinks.forEach(function(a){ byId[a.getAttribute('href').slice(1)] = a; });
+  var sections = navLinks
+    .map(function(a){ return document.querySelector(a.getAttribute('href')); })
+    .filter(Boolean);
+  if ('IntersectionObserver' in window && sections.length) {
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var link = byId[entry.target.id];
+        if (link && entry.isIntersecting) {
+          navLinks.forEach(function(l){ l.classList.remove('active'); });
+          link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function(s){ spy.observe(s); });
+  }
+
+  // Scroll reveal — fade sections in once, on first view
+  var revealEls = document.querySelectorAll('.reveal');
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    var reveal = new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); obs.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function(el){ reveal.observe(el); });
+    // Safety net: if a section never intersects (edge cases with automated
+    // tools, unusual viewports), don't leave content permanently hidden.
+    setTimeout(function(){
+      revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+    }, 2500);
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+
+  // Case study filter
+  var filterBtns = document.querySelectorAll('.filter-btn');
+  var caseStudies = document.querySelectorAll('details.case-study');
+  filterBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      filterBtns.forEach(function(b){ b.classList.remove('is-active'); b.setAttribute('aria-pressed', 'false'); });
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-pressed', 'true');
+      var f = btn.dataset.filter;
+      caseStudies.forEach(function(cs){
+        cs.style.display = (f === 'all' || cs.dataset.category === f) ? '' : 'none';
+      });
+    });
+  });
+
+  // Copy email to clipboard
+  document.querySelectorAll('.copy-email').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var email = btn.dataset.email;
+      if (!navigator.clipboard) { window.location.href = 'mailto:' + email; return; }
+      navigator.clipboard.writeText(email).then(function(){
+        var original = btn.textContent;
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(function(){ btn.textContent = original; btn.classList.remove('copied'); }, 1800);
+      });
+    });
+  });
+
+  // Animated accordion for case studies (skipped under reduced motion)
+  if (!reduceMotion) {
+    document.querySelectorAll('details.case-study').forEach(function(details){
+      var summary = details.querySelector(':scope > summary');
+      var body = details.querySelector(':scope > .case-body');
+      if (!summary || !body) return;
+      summary.addEventListener('click', function(e){
+        e.preventDefault();
+        if (details.open) { collapse(); } else { expand(); }
+      });
+      function expand(){
+        details.open = true;
+        var h = body.scrollHeight;
+        body.style.height = '0px';
+        requestAnimationFrame(function(){
+          body.style.transition = 'height 280ms ease';
+          body.style.height = h + 'px';
+        });
+        body.addEventListener('transitionend', function onEnd(){
+          body.style.height = '';
+          body.style.transition = '';
+          body.removeEventListener('transitionend', onEnd);
+        });
+      }
+      function collapse(){
+        var h = body.scrollHeight;
+        body.style.height = h + 'px';
+        requestAnimationFrame(function(){
+          body.style.transition = 'height 220ms ease';
+          body.style.height = '0px';
+        });
+        body.addEventListener('transitionend', function onEnd(){
+          details.open = false;
+          body.style.height = '';
+          body.style.transition = '';
+          body.removeEventListener('transitionend', onEnd);
+        });
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>
